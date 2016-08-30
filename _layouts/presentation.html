@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation" />
+    <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
+    <title>{{ site.title }} | {{page.title}}</title>
+    {% include favicon.html %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/public/css/util.css">
+    <style>
+      @import url({{site.baseurl}}/{{site.publicDir}}/css/remark-moxy-theme.css);
+      @import url({{site.baseurl}}/{{site.publicDir}}/css/slides.css);
+    </style>
+  </head>
+  <body>
+    <script src="{{site.baseurl}}/{{site.publicDir}}/js/remark.min.js"></script>
+    <script>
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="{{site.baseurl}}/{{site.publicDir}}/js/remark.language.js"></script>
+    <script>
+      var slideshow = remark.create({
+          sourceUrl: '{{page.slidesFileName}}',
+          highlightStyle: '{{site.remarkConfig.highlightStyle}}',
+          highlightLanguage: '{{site.remarkConfig.highlightLanguage}}',
+          highlightLines: {{site.remarkConfig.highlightLines}}
+        });
+    </script>
+  </body>
+</html>

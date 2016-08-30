@@ -1,0 +1,128 @@
+---
+---
+// Fonts
+@import url({{site.baseurl}}/{{site.publicDir}}/fonts/UbuntuMono/font.css);
+@import url({{site.baseurl}}/{{site.publicDir}}/fonts/Jaldi/font.css);
+@import url({{site.baseurl}}/{{site.publicDir}}/fonts/DroidSerif/font.css);
+
+$jaldiFont: 'Jaldi', sans-serif;
+$droidSerif: 'Droid Serif', Serif;
+$ubuntuMono:  'Ubuntu Mono', sans-serif;
+
+
+$bodyFontFamily: $droidSerif;
+$headerFontFamily: $jaldiFont;
+$codeFontFamily: $ubuntuMono;
+
+// Colors
+$darkBlueGray: #2C3E50;
+$coral: #E74C3C;
+$whiteGray: #ECF0F1;
+$lightBlue: #3498D8;
+$darkGray: #646464;
+$lightGray: #EFEFEF;
+
+
+$linkColor: $coral;
+
+$bodyTextColor: $darkGray;
+$headerTextColor: $darkBlueGray;
+$backgroundColor: $whiteGray;
+
+$codeInlineTextColor: $darkGray;
+$codeBackgroundColor: $lightGray;
+$codeHighlightedBackgroundColor: $darkGray;
+
+$inverseBodyTextColor: $lightGray;
+$inverseHeaderTextColor: $lightBlue;
+$inverseHeader2TextColor: $whiteGray;
+$inverseBackgroundColor: $darkBlueGray;
+
+
+
+// Begin Styles
+
+body {
+  font-family: $bodyFontFamily;
+}
+h1, h2, h3 {
+  font-family: $headerFontFamily;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 2em; }
+.remark-slide-content h3 { font-size: 1.6em; }
+.footnote {
+  position: absolute;
+  bottom: 3em;
+}
+li p { line-height: 1.25em; }
+.red { color: #fa0000; }
+.large { font-size: 2em; }
+a, a > code {
+  color: $linkColor;
+  text-decoration: none;
+}
+code {
+  background: $codeBackgroundColor;
+  border-radius: 5px;
+}
+.remark-code, .remark-inline-code {
+  font-family: $codeFontFamily;
+  color: $codeInlineTextColor;
+}
+.remark-code-line-highlighted     { background-color: $codeHighlightedBackgroundColor; }
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+#slideshow .slide .content code {
+  font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+  font-size: 0.9em;
+  padding: 15px;
+}
+.inverse {
+  background: $inverseBackgroundColor;
+  color: $inverseBodyTextColor;
+  text-shadow: 0 0 20px #333;
+}
+.inverse h1, .inverse h2 {
+  color: $inverseHeaderTextColor;
+  line-height: 0.8em;
+}
+
+.inverse h2 {
+  color: $inverseHeader2TextColor
+}
+
+/* Slide-specific styling */
+#slide-inverse .footnote {
+  bottom: 12px;
+  left: 20px;
+}
+
+/* Two-column layout */
+.left-column {
+  color: $bodyTextColor;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+  .left-column h2:last-of-type, .left-column h3:last-child {
+    color: #000;
+  }
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}

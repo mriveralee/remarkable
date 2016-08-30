@@ -1,0 +1,54 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: false
+
+# Setup
+title:               Remarkable - Slide Decks + Jekyll
+tagline:             I have no idea what I'm Doing
+description:         'Made by <a href="https://twitter.com/@mriveralee" target="_blank">@mriveralee</a>.'
+url:                 http://mriveralee.github.io/remarkable/
+baseurl:             '/remarkable'
+publicDir:           '/public'
+paginate:            5
+enableSidebar:      false
+
+sass:
+  sass_dir: _sass
+
+remarkConfig:
+  # possible highlight options:
+  # arta, ascetic, dark, default, far, github, googlecode, idea, ir_black,
+  # magula, monokai, rainbow, solarized-dark, solarized-light, sunburst,
+  # tomorrow, tomorrow-night-blue, tomorrow-night-bright, tomorrow-night,
+  # tomorrow-night-eighties, vs, zenburn.
+  highlightStyle: 'default'
+  highlightLanguage: 'remark'
+  highlightLines: true
+
+# Logic for a projects collection page
+collections:
+  slides:
+    permalink: /slides/:path/
+    output: true
+
+# About/contact
+author:
+  name:              Michael Rivera
+  url:               http://mikeriv.com
+  email:             something@something.com
+
+# Custom vars
+version:             1.0.0
+
+gems:
+  - jekyll-paginate
+
+
+# Exclude these files from your production _site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md

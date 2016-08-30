@@ -1,0 +1,82 @@
+<div class="presentations">
+  {% if site.slides %}
+    {% assign groupedPresentations = site.slides | group_by: 'postDate' %}
+    <table class="full-width">
+      <thead>
+        <th>Date</th>
+        <th>Content &amp; Slides</th>
+        <th>Exercises</th>
+        <th>Assignments</th>
+      </thead>
+    <tbody>
+      {% for group in groupedPresentations %}
+        {% assign finishedCount = 0 %}
+
+        {% for presentation in group.items %}
+          {% if presentation.isBeingEdited %}
+            {% continue %}
+          {% endif %}
+          {% assign finishedCount = 1 %}
+        {% endfor %}
+
+        {% if finishedCount == 0 %}
+          {% continue %}
+        {% endif %}
+
+        <tr>
+          <!-- Date -->
+          <td class="table-date text-align-center">{{ group.name | date: '%B %d, %Y' }}</td>
+          <!-- Slide decks -->
+          <td>
+            {% for presentation in group.items %}
+              {% if presentation.isBeingEdited %}
+                {% continue %}
+              {% endif %}
+              {% if forloop.index != 1 and forloop.index != forloop.last  %}
+                &nbsp;/&nbsp;<br>
+              {% endif %}
+              <a href="{{site.baseurl}}{{ presentation.url }}">{{ presentation.title }}</a>
+            {% endfor %}
+          </td>
+
+          <!-- Exercises -->
+          <td class="text-align-center">
+            {% assign hasExercises = 0 %}
+            {% for presentation in group.items %}
+              {% if presentation.exercises %}
+              {% if forloop.index != 1 and forloop.index != forloop.last  %}
+                &nbsp;/&nbsp;<br>
+              {% endif %}
+                {{presentation.exercises}}
+                {% assign hasExercises = 1 %}
+              {% endif %}
+            {% endfor %}
+            {% if hasExercises == 0 %}
+              --
+            {% endif %}
+          </td>
+          <!-- Assignments -->
+          <td class="text-align-center">
+            {% assign hasAssignments = 0 %}
+            {% for presentation in group.items %}
+              {% if presentation.isBeingEdited %}
+                {% continue %}
+              {% endif %}
+              {% if presentation.assignments %}
+              {% if forloop.index != 1 and forloop.index != forloop.last  %}
+                &nbsp;/&nbsp;<br>
+              {% endif %}
+                {{presentation.assignments}}
+                {% assign hasAssignments = 1 %}
+              {% endif %}
+            {% endfor %}
+            {% if hasAssignments == 0 %}
+              --
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
